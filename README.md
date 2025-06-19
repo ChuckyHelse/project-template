@@ -21,6 +21,8 @@ Voilà, you're done.
 
 ## How to use - Linux
 
+*NOT IMPLEMENTED YET*
+
 The usual way to use it is:
 1. Choose your application's name
 1. Transform the name into a short id: lowercase only, no space or blank, no special char (excepted `-`)
