@@ -16,8 +16,8 @@ set(CMAKE_CXX_STANDARD 17)
 set(BUILD_SHARED_LIBS OFF)
 set(CMAKE_INTERPROCEDURAL_OPTIMIZATION TRUE)
 
-add_executable(my-application main.cpp)
-target_precompile_headers(my-application PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/pch.hpp")
+add_executable(my-application "${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp")
+target_precompile_headers(my-application PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/src/pch.hpp")
 
 # header-only version
 find_package(spdlog CONFIG REQUIRED)
