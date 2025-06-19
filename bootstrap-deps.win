@@ -1,0 +1,13 @@
+fmt
+spdlog
+glm
+sdl3
+sdl3-ttf
+sdl3-image
+sdl3-image[png]
+sdl3-image[jpeg]
+imgui
+imgui[freetype]
+imgui[win32-binding]
+imgui[sdl3-binding]
+imgui[sdl3-renderer-binding]
