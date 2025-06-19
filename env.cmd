@@ -8,7 +8,7 @@ SET EDITOR=code --reuse-window
 
 :: VCVARS64
 IF "x%VSINSTALLDIR%"=="x" (
-    ECHO. [o] Searching Visual Studio Build Tools environment script...
+    ECHO. [o] Searching for Visual Studio Build Tools environment script...
     FOR /R "C:\Program Files (x86)\Microsoft Visual Studio" %%f IN ( vcvars64.bat ) DO (
         IF EXIST "%%f" (
             ECHO. [i] Found environment... [%%~dpf]
@@ -29,7 +29,6 @@ SET VCPKG_DEFAULT_BINARY_CACHE=%PROJECTDIR%.vcpkg\cache
 SET VCPKG_DISABLE_METRICS=1
 SET VCPKG_OVERLAY_TRIPLETS=%PROJECTDIR%vcpkg-triplets;%VCPKG_OVERLAY_TRIPLETS%
 SET VCPKG_DEFAULT_TRIPLET=x64-win-llvm-lto-san-static-md
-@REM SET VCPKG_DEFAULT_HOST_TRIPLET=x64-win-llvm-lto-san-static-md
 
 SET VCPKG_NO_CI=1
 SET VSLANG=1033
