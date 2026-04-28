@@ -1,5 +1,11 @@
-.vcpkg/
+build/
+_deps/
 .vs/
 .vscode/
-build/
-vcpkg_installed/
+.idea/
+CMakeUserPresets.json
+*.swp
+*.swo
+*~
+.DS_Store
+compile_commands.json
