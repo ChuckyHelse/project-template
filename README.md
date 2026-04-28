@@ -1,57 +1,127 @@
-# Project template
+# Platform-Specific Build Instructions
 
-A quick C++ startup template that helps you bootstrap your ideas if you want to build it using CMake, to retrieve its dependencies using VCPKG, and need FMT, SPDLOG, GLM, Dear ImGui and SDL3 to implement it.
+This document provides comprehensive build instructions for the project on different platforms, including Windows, Linux, and macOS.
 
-## How to use - Windows
+## Prerequisites
+- CMake (version 3.19 or higher)
+- Compiler (GCC for Linux, Clang for macOS, MSVC for Windows)
+- Ninja (optional, for faster builds)
+- Make (optional for Linux)
+- Visual Studio (for Windows, optional)
+- Xcode (for macOS, optional)
 
-The usual way to use it is:
-1. Choose your application's name and compose a short id from it: lowercase only, no space or blank, no special char (excepted `-`). We'll call it `my-application` from now on but you'll replace it your own application short id.
-1. Copy all files from this project template folder to `my-application` folder.
-1. Press <kbd>WIN</kbd>+<kbd>R</kbd> and enter `cmd` in the popup
-1. Type the following command followed by <kbd>ENTER</kbd>:
-```
-mkdir my-application & cd my-application
-```
-1. Run the following command:
-```
-bootstrap.cmd
+## Windows Build Instructions
+1. **Install Prerequisites**:
+   - Download and install [Visual Studio](https://visualstudio.microsoft.com/downloads/) with C++ development tools.
+   - Install CMake from [here](https://cmake.org/download/).
+
+2. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/ChuckyHelse/project-template.git
+   cd project-template
+   ```
+
+3. **Create a Build Directory**:
+   ```bash
+   mkdir build && cd build
+   ```
+
+4. **Configure the Project with CMake**:
+   - Using Visual Studio:
+   ```bash
+   cmake .. -G "Visual Studio 16 2019"
+   ```  
+   - Using Ninja:
+   ```bash
+   cmake .. -G Ninja
+   ```
+
+5. **Build the Project**:
+   - Using Visual Studio:
+   ```bash
+   cmake --build . --config Release
+   ```
+   - Using Ninja:
+   ```bash
+   ninja
+   ```
+
+## Linux Build Instructions
+1. **Install Prerequisites**:
+   ```bash
+   sudo apt install build-essential cmake ninja-build
+   ```
+
+2. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/ChuckyHelse/project-template.git
+   cd project-template
+   ```
+
+3. **Create a Build Directory**:
+   ```bash
+   mkdir build && cd build
+   ```
+
+4. **Configure the Project with CMake**:
+   ```bash
+   cmake .. -G Ninja
+   ```
+
+5. **Build the Project**:
+   ```bash
+   ninja
+   ```
+
+## macOS Build Instructions
+1. **Install Prerequisites**:
+   ```bash
+   brew install cmake ninja
+   ```
+
+2. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/ChuckyHelse/project-template.git
+   cd project-template
+   ```
+
+3. **Create a Build Directory**:
+   ```bash
+   mkdir build && cd build
+   ```
+
+4. **Configure the Project with CMake**:
+   ```bash
+   cmake .. -G Ninja
+   ```
+
+5. **Build the Project**:
+   ```bash
+   ninja
+   ```
+
+## CMake Presets Usage
+- You can define `CMakePresets.json` and use custom presets for different build configurations.
+- Presets streamline the build configuration process and allow for easier switching between different settings.
+
+## Debug vs Release Configurations
+- **Debug Configuration**: Enables debugging symbols and disables optimizations.
+- **Release Configuration**: Optimizes the code for performance, suitable for production.
+
+You can specify the configuration like this:
+```bash
+cmake --build . --config Debug
 ```
 
-Voilà, you're done.
-
-## How to use - Linux
-
-*NOT IMPLEMENTED YET*
-
-The usual way to use it is:
-1. Choose your application's name
-1. Transform the name into a short id: lowercase only, no space or blank, no special char (excepted `-`)
-1. Open your preferred terminal application
-1. Type the following command followed by <kbd>ENTER</kbd>, but replacing `my-application` with your application's short id:
-```
-mkdir my-application ; cd my-application
-```
-1. Copy all files from this project template folder to `my-application` folder.
-1. Adapt the application dependency list:
-    1. Explore the list of available ports in vcpkg using https://vcpkg.link/
-    1. Open `my-application\bootstrap-dependencies.txt`
-    1. Add / remove port names, then save
-1. Run the following command:
-```
-.\bootstrap.sh
+## Dependency Customization
+- You can customize dependencies using CMake options. Simply pass them during configuration:
+```bash
+cmake .. -DOPTION_NAME=VALUE
 ```
 
-## Finalization
-
-1. Adapt the application dependency list:
-    1. Explore the list of available ports in vcpkg using https://vcpkg.link/
-    1. Call `vcpkg add port [PORT]` with the need port name
-    1. Call `vcpkg search [KEYWORD]` to search for `[KEYWORD]` in the list of available ports.
-    1. Keep a copy the 2 lines of usage shown on the page
-1. Open CMakeLists.txt and:
-    1. Replace occurrences of `main` with your application's short id. This will become the main executable name.
-    1. Append the copy of usage line pairs saved earlier for each new port
-1. Run:
-```
-cmake --build build
-```
+## Troubleshooting
+- If you experience issues during building or generating the project files, make sure:
+  - All prerequisites are installed.
+  - You're in the correct directory.
+  - You're using a compatible version of CMake and the compiler.
+  - Check logs for any error messages to guide troubleshooting steps.
