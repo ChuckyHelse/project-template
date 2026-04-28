@@ -1,14 +1,39 @@
 {
-  "version": 2,
+  "version": 6,
   "configurePresets": [
     {
-      "name": "vcpkg",
-      "generator": "Ninja",
+      "name": "default",
+      "generator": "Ninja Multi-Config",
       "binaryDir": "${sourceDir}/build",
       "cacheVariables": {
-        "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
-        "CURRENT_PRESET": "vcpkg"
+        "CMAKE_CONFIGURATION_TYPES": "Debug;Release"
       }
+    },
+    {
+      "name": "windows-default",
+      "inherits": "default",
+      "generator": "Visual Studio 17 2022"
+    },
+    {
+      "name": "linux-debug",
+      "inherits": "default",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "linux-release",
+      "inherits": "default",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "default",
+      "configurePreset": "default",
+      "jobs": 0
     }
   ]
 }
